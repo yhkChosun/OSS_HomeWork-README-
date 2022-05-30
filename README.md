@@ -4,7 +4,7 @@
 ## top
 **리눅스 시스템의 운용상황을 실시간으로 전반적인 상황을 모니터링 하거나 프로세스 관리를 할 수 있는 유틸리티 이다.**
  <img src="https://user-images.githubusercontent.com/105004850/170911224-9a389932-6971-43e4-8a1d-615b7880d97d.PNG" width="1100" height="300">
- '~$ top'
+ `~$ top`
  
  **세부 정보 필드별 항목**
  * PID : 프로세스 ID (PID)
@@ -52,8 +52,8 @@
 
 ## ps
 **현재 실행중인 프로세스 목록을 보여준다. 주로 파이프라인, grep명령어와 함께 사용하여 특정 프로세스를 확인하는데 사용된다.**
-<img src=https://user-images.githubusercontent.com/105004850/170917879-2becd5d4-20f6-4d0a-a1ae-6b895e0be475.PNG width="1100" height="300">
-'-$ ps -ef : 모든 프로세스를 풀 포맷으로 출력'
+<img src="https://user-images.githubusercontent.com/105004850/170917879-2becd5d4-20f6-4d0a-a1ae-6b895e0be475.PNG" width="1100" height="300">
+`-$ ps -ef : 모든 프로세스를 풀 포맷으로 출력`
 
 **세부정보 필드별 항목**
 * UID : 실행 유저
@@ -75,12 +75,61 @@
 |-u|특정 사용자의 프로세스를 보여준다.|
 
 **대표적인 사용예시**
-* 'ps -f : 풀 포맷으로 출력'
-* '''ps -l : 긴 포맷으로 출력'''
-* '''ps -p 1 : 프로세스 번호가 1인 프로세스 출력'''
-* '''ps -u ssh : 계정이 ssh인 프로세스들을 출력'''
-* '''ps -e : 모든 프로세스 출력'''
-* '''ps -ef | more : 모든 프로세스를 풀 포맷으로 출력. more명령어를 줘서 페이지 단위로 출력'''
-* '''ps -ef | grep ssh : 모든 프로세스의 출력값을 grep을 이용하여 ssh가 포함된 라인들을 출력'''
+* `ps -f : 풀 포맷으로 출력`
+* `ps -l : 긴 포맷으로 출력`
+* `ps -p 1 : 프로세스 번호가 1인 프로세스 출력`
+* `ps -u ssh : 계정이 ssh인 프로세스들을 출력`
+* `ps -e : 모든 프로세스 출력`
+* `ps -ef | more : 모든 프로세스를 풀 포맷으로 출력. more명령어를 줘서 페이지 단위로 출력`
+* `ps -ef | grep ssh : 모든 프로세스의 출력값을 grep을 이용하여 ssh가 포함된 라인들을 출력`
 
 ## jobs
+**작업의 상태를 표시하는 명령어 이다. 현재 쉘 세션에서 실행시킨 백그라운드 작업의 목록이 출력되며, 각 작업에는 번호가 붙어 있어 kill 명령어 뒤에 '%번호' 등으로 사용할 수 있다. 쉽게 말하면, 현재 쉘 프로세스의 자식 백그라운드 프로세스들을 보여준다고 생각하면 된다.**
+
+**jobs로 출력되는 백그라운드 작업의 상태값**
+* Running : 작업이 계속 진행중임
+* Done : 작업이 완료되어 0을 반환
+* Done(code) : 작업이 종료되었으며 0이 아닌 코드를 반환
+* Stopped : 작업이 일시 중단
+* Stopped(SIGSTP) : SIGSTP 시그널이 작업을 일시 중단
+* Stopped(SIGSTOP) : SIGSTOP 시그널이 작업을 일시 중단
+* Stopped(SIGTTIN) : SIGTTIN 시그널이 작업을 일시 중단
+* Stopped(SIGTTOU) : SIGTTOU 시그널이 작업을 일시 중단
+
+|옵션|기능|
+|---|---|
+|-l|프로세스 그룹 ID를 state 필드 앞에 출력|
+|-n|프로세스 그룹 중에 대표 프로세스 ID를 출력|
+|-p|각 프로세스 ID에 대해 한 행씩 출력|
+|command|지정한 명령어를 실행|
+
+
+## kill
+**프로세스에 특정한 signal을 보내는 명령어 이다. 일반적으로 종료되지 않는 프로세스를 종료 시킬 때 많이 사용한다.**
+
+**kill 시그널 리스트는 아래의 명령어를 입력하면 확인할 수 있다. 모든 시그널 리스트는 아래 사진에 해당된다.**
+`$ kill -l`
+<img src="https://user-images.githubusercontent.com/105004850/170922569-964e9fe0-46b3-4cc2-b04d-f97f4355bbaf.PNG" width="1100" height="300">
+
+**주요 시그널**
+|시그널|영어|기능|
+|----|---|---|
+|1) SIGHPUP|Hang Up|세션이 종료될 때 시스템이 내리는 시그널|
+|2) SIGINT|Interrupt|Ctrl + C, 종료 요청 시그널|
+|9) SIGKILL|Kill|강제 종료 시그널|
+|11) SiGSEGV|Segment Violation|메모리 침범이 일어날 때 시스템이 보내는 시그널|
+|15) SIGTERM|Terminate|기본 값, 강제 종료 시그널|
+|20) SIGTSTP|Temporary Stop|Ctrl + Z, 일시 중지 요청 시그널|
+
+**프로세스에 시그널 보내기 예시**
+```
+$ kill [option] PID
+
+# 1111(PID) 프로세스 종료
+$ kill -9 1111
+$ kill -SIGKILL 1111
+```
+
+
+
+
