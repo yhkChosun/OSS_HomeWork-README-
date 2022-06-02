@@ -12,7 +12,7 @@
   
   
 
-## top
+# top
 **리눅스 시스템의 운용상황을 실시간으로 전반적인 상황을 모니터링 하거나 프로세스 관리를 할 수 있는 유틸리티 이다.**
  <img src="https://user-images.githubusercontent.com/105004850/170911224-9a389932-6971-43e4-8a1d-615b7880d97d.PNG" width="1100" height="300">
  `$ top`
@@ -67,7 +67,7 @@
   
   
   
-## ps
+# ps
 **현재 실행중인 프로세스 목록을 보여준다. 주로 파이프라인, grep명령어와 함께 사용하여 특정 프로세스를 확인하는데 사용된다.**
 <img src="https://user-images.githubusercontent.com/105004850/170917879-2becd5d4-20f6-4d0a-a1ae-6b895e0be475.PNG" width="1100" height="300">
 `$ ps -ef : 모든 프로세스를 풀 포맷으로 출력`
