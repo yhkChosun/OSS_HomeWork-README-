@@ -1,6 +1,6 @@
 # OSS_HomeWork-README- <과제2 - 조사내용 REAME파일로 정리하기>
 
-## 목차
+> 목차
 1) top 명령어
 2) ps 명령어
 3) jobs 명령어
