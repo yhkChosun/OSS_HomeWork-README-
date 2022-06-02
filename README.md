@@ -1,5 +1,11 @@
 # OSS_HomeWork-README-
 
+## 목차
+1) top 명령어
+2) ps 명령어
+3) jobs 명령어
+4) kill 명령어
+5) vim 매크로
 
 
 
